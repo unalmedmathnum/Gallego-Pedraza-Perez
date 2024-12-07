@@ -85,9 +85,9 @@ This will install all the necessary dependencies (e.g., numpy, scipy) required t
 
 Inside the `src/methods` directory, you will find the Python files that contain the code for each method.
 
-1. **`characteristic_polynomial_method.py`**
-2. **`power_method.py`**
-3. **`qr_method.py`**
+1. **`characteristic-polynomial-method.py`**
+2. **`power-method.py`**
+3. **`qr-method.py`**
 
 You can run them directly, for example:
 ```bash
@@ -98,9 +98,9 @@ You can run them directly, for example:
 
 Inside the `src/tests` directory, you will find the Python files that contain the code for each method with each matrix given in the assigments.
 
-1. **`characteristic_polynomial_method.py`**
-2. **`power_method.py`**
-3. **`qr_method.py`**
+1. **`characteristic-polynomial-method.py`**
+2. **`power-method.py`**
+3. **`qr-method.py`**
 
 You can run them directly, for example:
 ```bash
