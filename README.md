@@ -20,12 +20,12 @@ The source code for these methods is located in the `src/methods` directory.
 
 ├─ report<br>
 ├─ src <br>
-    ├─ methods <br>
-        ├─ characteristic-polynomial-method.py <br>
-        ├─ power-method.py <br>
-        └─ qr-decomposition-method.py<br>
-    ├─ results<br>
-    └─ tests<br>
+> ├─ methods <br>
+>> ├─ characteristic-polynomial-method.py <br>
+>> ├─ power-method.py <br>
+>> └─ qr-decomposition-method.py<br>
+> ├─ results<br>
+> └─ tests<br>
 ├─ .gitignore <br>
 ├─ README.md<br>
 └─ requirements.txt  <br>
