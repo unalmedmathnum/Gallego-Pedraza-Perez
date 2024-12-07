@@ -18,17 +18,27 @@ The source code for these methods is located in the `src/methods` directory.
 
 ## Project Structure
 
-├─ report<br>
-├─ src <br>
-> ├─ methods <br>
->> ├─ characteristic-polynomial-method.py <br>
->> ├─ power-method.py <br>
->> └─ qr-decomposition-method.py<br>
-> ├─ results<br>
-> └─ tests<br>
-├─ .gitignore <br>
-├─ README.md<br>
-└─ requirements.txt  <br>
+```
+├─ report
+    ├─ Gallego Montoya- Pedraza Rendón- Pérez Pérez.pdf
+    └─ Gallego Montoya- Pedraza Rendón- Pérez Pérez.tex
+├─ src
+    ├─ methods
+        ├─ characteristic-polynomial-method.py
+        ├─ power-method.py
+        └─ qr-decomposition-method.py
+    ├─ results
+        ├─ characteristic-polynomial-method.pdf
+        ├─ power-method.pdf
+        └─ qr-decomposition-method.pdf
+    └─ tests
+        ├─ characteristic-polynomial-method.py
+        ├─ power-method.py 
+        └─ qr-decomposition-method.py
+├─ .gitignore
+├─ README.md
+└─ requirements.txt
+```
 
 - `requirements.txt`: Contains the dependencies needed to run the project.
 - `src/methods/`: Contains the Python scripts implementing the eigenvalue and eigenvector methods.
