@@ -1,0 +1,698 @@
+% hello.tex - Our first Latex homework!
+\documentclass[11pt]{article}
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsthm,amsfonts,amscd,amssymb,amsbsy,epsf}
+\usepackage{verbatim}
+\usepackage{graphicx, subfigure}
+\usepackage{enumerate}
+\usepackage{bbm, dsfont, mathrsfs}
+%\usepackage[default]{frcursive}
+%\usepackage[T1]{fontenc}
+\usepackage{cmbright}
+%\usepackage{mathabx}
+%\usepackage{skak}
+%\usepackage{harmony}
+%\usepackage{fancyhdr}
+\usepackage[document]{ragged2e}
+\usepackage{tikz,colortbl}
+\usepackage{epigraph}
+\usepackage{scrextend}
+\usepackage{mdframed, xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+
+%\usepackage[letterpaper]{geometry}
+%\pagestyle{fancy}
+%\lhead{ \fontsize{8}{12} \selectfont \bfseries Escuela de Matem\'aticas. Universidad Nacional de Colombia, Sede Medell\'in.} 
+%\chead{}
+%%\rhead{\bfseries }
+%\lfoot{}
+%\cfoot{}
+%\rfoot{}
+
+%\usepackage{hieroglf}
+%\usepackage{protosem}
+%\usepackage{phoenician}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}	
+\newtheorem{problema}[theorem]{Problema}
+\renewcommand{\thetheorem}{\arabic{theorem}} %Numbering including only chapter
+
+\renewcommand{\theequation}{\arabic{equation}} %Numbering including only chapter
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definicion}{Definici\'on}
+\newtheorem{discusion}{Discusi\'on}
+%\renewcommand{\deficount}{\arabic{definicion}} %Numbering including only chapter
+%\newtheorem{mddefinicion}[theorem]{Definici\'on}
+%\newenvironment{definicion}%
+%{\begin{mdframed}[backgroundcolor=gray!25, linecolor=black!0]\begin{mddefinicion}}%
+%		{\end{mddefinicion}\end{mdframed} }
+%\renewcommand{\thetheorem}{\roman{theorem}} %Numbering including only chapter
+%\usepackage{sfmath} % to get equations in Sans Serif font the whole document
+%\usepackage{sans} % to get text in Sans Serif font the whole document
+
+%\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\familydefault}{\ttdefault}
+%\renewcommand{\rmdefault}{ptm}
+%\renewcommand{\ttdefault}{cou}
+%\newtheorem*{theorem*}{Theorem}
+
+
+
+\voffset -0.5 in
+
+\hoffset -1.2 in
+
+\setlength{\textwidth}{19 cm}
+
+\setlength{\textheight}{21 cm}
+
+
+
+\DeclareMathOperator*{\inv}{inv}
+\DeclareMathOperator*{\per}{per}
+\DeclareMathOperator*{\sgn}{sgn}
+\DeclareMathOperator*{\area}{area}
+%\DeclareMathOperator*{\wt}{wt}
+\DeclareMathOperator*{\Int}{Int}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MACROS
+\def\Z{\boldsymbol{\mathbbm{Z}}}
+\def\Q{\boldsymbol{\mathbbm{Q}}}
+\def\P{\mathcal{P}}
+\def\A{\mathcal{A}}
+\def\G{\mathcal{G}}
+\def\C{\boldsymbol{\mathbbm{C}}}
+\def\F{\mathcal{F}}
+\def\T{\mathcal{T}}
+\def\B{\mathcal{B}}
+\def\M{\mathcal{M}}
+\def\I{\mathcal{I}}
+\def\N{\boldsymbol{\mathbbm{N}}}
+\def\R{\boldsymbol{\mathbbm{R}}}
+\def\prob{\boldsymbol{\mathbbm{P}}}
+\def\Exp{\boldsymbol{\mathbbm{E}}}
+\def\Var{\boldsymbol{\mathbbm{V}}\!\mathrm{ar}}
+\def\ind{\boldsymbol{\mathbbm{1}}}
+\def\defining{\boldsymbol{\overset{\mathrm{def}}=}}
+\def\D{\mathfrak{D}}
+\def\lcm{\mathrm{lcm}}
+\def\wconv{\overset{w}\rightharpoonup}
+\def\wt{\mathrm{wt}}
+
+%\doublespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+\title{\textbf{PRIMERA TAREA:} Valores y vectores propios}
+
+\author{Carlos Andr\'es Gallego Montoya - Gustavo Adolfo P\'erez P\'erez - Sebasti\'an Pedraza Rend\'on}
+\date{2024}
+%
+\maketitle
+%
+
+%
+\begin{enumerate}[(i)]
+%
+%
+
+	\item\textbf{M\'etodo 1: \textcolor{violet}{Polinomio caracter\'istico}.}\\
+El polinomio caracter\'istico de una matriz $\textbf{A}$ se define como sigue:
+\begin{equation}
+\det(\textbf{A} - \lambda \textbf{I}) = 0
+\end{equation}
+siendo $\textbf{I}$ la matriz identidad. Las raices reales de dicho polinomio son valores propios de $\textbf{A}$. Para hallar los vectores propios, se sustituyen cada uno de los $\lambda$ en la ecuaci\'on $(\textbf{A} - \lambda \textbf{I})\vec{x} = 0$; as\'i resultan sus respectivos $\vec{x}_{\lambda}$. El m\'etodo requiere solucionar una ecuaci\'on polinomial que, computacionalmente, suele ser realmente demandante si se aplica en matrices de grandes dimensiones.\\
+\vspace{2mm} % Espacio entre líneas.
+------ \textcolor{violet}{An\'alisis} ---------------------------------------------------------------------------------------------------------------------\\
+\vspace{2mm} % Espacio entre líneas.
+Sean $\textbf{A}$ una matriz $n \times n$, $\vec{x} \in \R^{n}$ y $\lambda \in \R$.\\
+Se tiene el problema: $\textbf{A}\vec{x} = \lambda\vec{x}$. Se busca encontrar los escalares, $\lambda$, para los cuales el vector $\vec{x}$ presenta el mismo cambio al operarle con dicho valor que al aplicarle la transformaci\'on dada por $\textbf{A}$. Como $\textbf{A}$ es una transformaci\'on, \'esta manipula $\R^{n}$ en funci\'on de las entradas que posea. Por lo que cada axis es un objetivo de posible cambio.\\
+De acuerdo con lo anterior, como se busca que $\lambda$ represente escalarmente dicha transformaci\'on, se postula la siguiente idea:
+\begin{equation*}
+\lambda \textbf{I} = \lambda
+\begin{pmatrix}
+1 & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1
+\end{pmatrix} =
+\begin{pmatrix}
+\lambda & 0 & \cdots & 0\\
+0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda
+\end{pmatrix}
+\end{equation*}
+En esa situaci\'on, $\lambda$ toma el valor can\'onico de cada eje; es decir, $\lambda$ est\'a relacionada con el cambio para cada base  can\'onica de $\R^{n}$. As\'i que el problema se torna: $\textbf{A}\vec{x} = (\lambda\textbf{I})\vec{x}$. Entonces:
+\begin{equation*}
+\textbf{A}\vec{x} = (\lambda\textbf{I})\vec{x} \rightarrow \textbf{A}\vec{x} - (\lambda\textbf{I})\vec{x} = \vec{0} \rightarrow (\textbf{A} - \lambda\textbf{I})\vec{x} = \vec{0}
+\end{equation*}
+\begin{equation*}
+\textbf{A} - \lambda\textbf{I} =
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n,1} & a_{n,2} & \cdots & a_{n,n}
+\end{pmatrix} -
+\begin{pmatrix}
+\lambda & 0 & \cdots & 0\\
+0 & \lambda & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & \lambda
+\end{pmatrix} = 
+\begin{pmatrix}
+a_{1,1} - \lambda & a_{1,2} & \cdots & a_{1,n}\\
+a_{2,1} & a_{2,2} - \lambda & \cdots & a_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n,1} & a_{n,2} & \cdots & a_{n,n} - \lambda
+\end{pmatrix}
+\end{equation*}
+Esta nueva matriz nos muestra la diferencia entre la transformaci\'on y el cambio escalar respecto a cada eje. Para la ecuaci\'on se necesitan soluciones no triviales (i.e. $\vec{x} = 0$); lo que conlleva a que $\textbf{A} - \lambda\textbf{I} = 0$. Al ser $\textbf{A}$  una transformaci\'on, se sabe que $\det(\textbf{A})$ nos muestra el efecto que produce en $\R^{n}$: ya sea que deforme el espacio (i.e. $\det(\textbf{A}) = 0$) \'o lo altere proporcionalmente (i.e. $\det(\textbf{A}) \neq 0$).\\
+Entonces, $\det(\textbf{A} - \lambda\textbf{I}) = 0$, que es lo pedido para la respuesta, refleja un polinomio de la forma:
+\begin{equation*}
+\det(\textbf{A} - \lambda\textbf{I}) = \sum\limits_{i = 0}^{n} r_{i}\lambda^{i} = 0
+\end{equation*}
+donde cada $r_{i} \in \R$ (en particular: $r_{n} = (-1)^{n}$) y $\lambda^{i}$ es el escalar/inc\'ognita buscada que soluciona la ecuaci\'on. Las $\lambda$ que satisfagan dicha igualdad ser\'an los valores propios que, a su vez, generar\'an los vectores propios $\lambda\vec{x}$.\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Aplicar el m\'etodo a la siguiente matriz:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+2 & 2 & 3\\
+1 & 2 & 1\\
+2 & -2 & 1
+\end{pmatrix}
+\end{equation*}
+Aplicando la teoria anterior:
+\begin{equation*}
+\textbf{A} - \lambda\textbf{I} =
+\begin{pmatrix}
+2 - \lambda & 2 & 3\\
+1 & 2 - \lambda & 1\\
+2 & -2 & 1 - \lambda
+\end{pmatrix}
+\end{equation*}
+Entonces tenemos lo siguiente:
+\begin{equation*}
+(2 - \lambda) \det
+\begin{pmatrix}
+2 - \lambda & 1\\
+-2 & 1 - \lambda
+\end{pmatrix} - 2\det
+\begin{pmatrix}
+1 & 1\\
+2 & 1 - \lambda
+\end{pmatrix} + 3\det
+\begin{pmatrix}
+1 & 2 - \lambda\\
+2 & -2
+\end{pmatrix} = 0
+\end{equation*}
+Dej\'andonos con el polinomio: 
+\begin{equation*}
+(2 - \lambda)[(2 - \lambda)(1 - \lambda) + 2] - 2[(1 - \lambda) - 2] + 3[-2 - 2(2 - \lambda)] = 0
+\end{equation*}
+\begin{equation*}
+- \lambda^{3} + 5\lambda^{2} - 2\lambda + 8 = 0
+\end{equation*}
+Luego, los valores propios son de la forma $\lambda_{1} = -1$, $\lambda_{2} = 2$ y $\lambda_{3} = 4$. Respecto a los vectores propios:
+\begin{equation*}
+\textbf{A}\vec{x}_{1} = \lambda_{1}\vec{x}_{1} \rightarrow 
+\begin{pmatrix}
+2 & 2 & 3\\
+1 & 2 & 1\\
+2 & -2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix} = -1
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\textbf{A}\vec{x}_{2} = \lambda_{1}\vec{x}_{2} \rightarrow 
+\begin{pmatrix}
+2 & 2 & 3\\
+1 & 2 & 1\\
+2 & -2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix} = 2
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\textbf{A}\vec{x}_{3} = \lambda_{1}\vec{x}_{3} \rightarrow 
+\begin{pmatrix}
+2 & 2 & 3\\
+1 & 2 & 1\\
+2 & -2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix} = 4
+\begin{pmatrix}
+x \\
+y \\
+z 
+\end{pmatrix}
+\end{equation*}
+Que son de la forma:
+\begin{equation*}
+\vec{x}_{1} =
+\begin{pmatrix}
+-z \\
+0 \\
+z 
+\end{pmatrix}, 
+\vec{x}_{2} =
+\begin{pmatrix}
+-z \\
+\frac{-3z}{2} \\
+z 
+\end{pmatrix}, 
+\vec{x}_{3} =
+\begin{pmatrix}
+4z \\
+\frac{5z}{2} \\
+z 
+\end{pmatrix} 
+\end{equation*}
+Y esa es la forma de los vectores propios seg\'un la transformaci\'on. $\blacksquare$ \\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Error}: Sea $\lambda_{i}'$ un valor aproximado de $\lambda_{i}$. T\'omense $\vec{x}'$ y $\vec{x}$ como sus respectivos vectores propios.\\
+El error absoluto para los valores propios viene dado por $e_{i} = |\lambda_{i} - \lambda_{i}'|$. Para los vectores propios se ejecuta el mismo orden de ideas, pero para $\R^{n}$:
+\begin{equation*}
+e_{\vec{x_{i}}} = \| x_{i} - x_{i}'\|
+\end{equation*}
+Luego, para el c\'omputo general de error:
+\begin{equation*}
+\mathcal{E} = \left(\sum\limits_{i = 1}^{n}\lambda_{i} - \lambda_{i}'\right)^{\frac{1}{2}}
+\end{equation*}
+donde la notaci\'on corresponde a:
+\begin{equation*}
+\vec{\lambda} = 
+\begin{pmatrix}
+\lambda_{1} \\
+\lambda_{2} \\
+\vdots \\
+\lambda_{n}
+\end{pmatrix},
+\vec{\lambda'} = 
+\begin{pmatrix}
+\lambda_{1}' \\
+\lambda_{2}' \\
+\vdots \\
+\lambda_{n}'
+\end{pmatrix}
+\end{equation*}
+Siendo m\'as espec\'ificos, el factor clave viene a ser la condici\'on de la matriz. Si $\textbf{A}$ es invertible, su n\'umero de condici\'on viene dado por:
+\begin{equation*}
+\kappa(\textbf{A}) = \| \textbf{A}\|_{\infty} \| \textbf{A}^{-1}\|_{\infty}
+\end{equation*}
+donde $\| \textbf{A} \|_{\infty} = \max\limits_{1 \leq i \leq n} \left( \sum\limits_{j = 1}^{n}|a_{ij}|\right)$. Entre m\'as grande sea dicho n\'umero, m\'as es de esperar que el error en sus valores y vectores propios sean grandes; el m\'etodo depende en su totalidad del buen condicionamiento de la matriz. Si $\det(\textbf{A}) = 0$, entonces la inversa no existe y se dice que $\kappa(\textbf{A}) = \infty$; implicando que la soluci\'on sea inestable o que no exista.\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Verificar el condicionamiento de la matriz del ejemplo:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+2 & 2 & 3\\
+1 & 2 & 1\\
+2 & -2 & 1
+\end{pmatrix}
+\end{equation*}
+Primero es bueno verificar que la matriz sea invertible:
+\begin{equation*}
+\det(\textbf{A}) = 2(2 + 2) - 2(1 - 2) + 3(-2 - 4) = -8
+\end{equation*}
+Al comprobar que la matriz es invertible, procedemos con el error:
+\begin{equation*}
+\textbf{A}^{-1} =
+\begin{pmatrix}
+-\frac{1}{2} & 1 & \frac{1}{2}\\
+-\frac{1}{8} & \frac{1}{2} & -\frac{1}{8}\\
+\frac{3}{4} & -1 & -\frac{1}{4}
+\end{pmatrix}
+\end{equation*}
+Luego, $\| \textbf{A} \|_{\infty} = 7$ y $\| \textbf{A}^{-1}  \|_{\infty}= 2$. Entonces $\kappa(\textbf{A}) = 14$ nos muestra un buen acondicionamiento. $\blacksquare$ \\
+\vspace{2mm} % Espacio entre líneas.
+%\textcolor{violet}{Computaci\'on}:
+%\vspace{2mm} % Espacio entre líneas.
+	\item\textbf{M\'etodo 2: \textcolor{violet}{Potencias}.}\\
+El m\'etodo de las potencias es un procedimiento iterativo que se encarga de encontrar el valor propio dominante de una matriz con su respectivo vector propio.\\
+Partiendo desde un vector arbitrario $\vec{x}_{0}$, el m\'etodo opera reiteradamente la matriz a este vector para conseguir, eventualmente, la convergencia hacia el vector propio correspondiente al $\lambda_{max}$.\\
+
+Una caracter\'istica \'util del m\'etodo de las potencias es que no s\'olo produce un valor propio, sino tambi\'en un vector propio asociado. En realidad el m\'etodo de las potencias se aplica a menudo para encontrar un vector propio para un valor propio que se determina por otros medios.
+Para aplicar el m\'etodo de las potencias, suponemos que la matriz $nxn$ tiene $n$ valores propios asociados con una colecci\'on de vectores linealmente independientes, por tanto suponemos que la matriz  $\textbf{A}$ tiene un valor propio de mayor magnitud.
+
+\vspace{2mm} % Espacio entre líneas.
+------ \textcolor{violet}{An\'alisis} ---------------------------------------------------------------------------------------------------------------------\\
+\vspace{2mm} % Espacio entre líneas.
+Sean $\textbf{A}$ una matriz $n \times n$, diagonalizable, y $\left\lbrace \lambda_{i} \right\rbrace_{1 \leq i \leq n}$ el conjunto de sus valores propios ordenados de la siguiente forma:
+\begin{equation*}
+|\lambda_{1}| > |\lambda_{2}| \geq \cdots \geq |\lambda_{n}|
+\end{equation*}
+Sea $\vec{u}_{0} \in \R^{n}$ no nulo. Sean $\vec{v}_{1}, \ldots, \vec{v}_{n}$ los vectores propios correspondientes a cada $\lambda_{1}, \ldots, \lambda_{n}$, respectivamente. Como los vectores propios forman una base respecto a la operaci\'on dada por $\textbf{A}\vec{x}$, \'estos son linealmente independientes. As\'i que se escribe $\vec{u}_{0}$ en funci\'on de los vectores propios:
+\begin{equation*}
+\vec{u}_{0} = r_{1}\vec{v}_{1} + \cdots + r_{n}\vec{v}_{n}
+\end{equation*}
+Por lo que los vectores de la forma $\textbf{A}^{k}\vec{u}_{0}$, con $k \in \N$, se pueden escribir como combinaci\'on lineal de la siguiente manera:
+\begin{equation*}
+\textbf{A}\vec{u}_{0} = \lambda_{1}(r_{1}\vec{v}_{1}) + \cdots + \lambda_{n}(r_{n}\vec{v}_{n})
+\end{equation*}
+\begin{equation*}
+\textbf{A}^{2}\vec{u}_{0} = \lambda^{2}_{1}(r_{1}\vec{v}_{1}) + \cdots + \lambda^{2}_{n}(r_{n}\vec{v}_{n})
+\end{equation*}
+\begin{equation*}
+\vdots
+\end{equation*}
+\begin{equation*}
+\textbf{A}^{k}\vec{u}_{0} = \lambda^{k}_{1}(r_{1}\vec{v}_{1}) + \cdots + \lambda^{k}_{n}(r_{n}\vec{v}_{n})
+\end{equation*}
+Siempre que $\lambda_{1} \neq 0$, la ecuaci\'on se puede reinterpretar como sigue:
+\begin{equation*}
+\frac{\textbf{A}^{k}\vec{u}_{0}}{\lambda^{k}_{1}} = r_{1}\vec{v}_{1} + \cdots + \left(\frac{\lambda_{n}}{\lambda_{1}}\right)^{k}r_{n}\vec{v}_{n}
+\end{equation*}
+Al asumir $|\lambda_{1}| > |\lambda_{i}|$ nos resulta: $\frac{|\lambda_{i}|}{|\lambda_{1}|} < 1$ para todo $1 \leq i \leq n$. Entonces, para $k \rightarrow \infty$, obtenemos:
+\begin{equation*}
+\lim\limits_{k \rightarrow \infty} \frac{\textbf{A}^{k}\vec{u}_{0}}{\lambda^{k}_{1}} = r_{1}\vec{v}_{1}
+\end{equation*}
+Con taza de convergencia menor o igual a $\frac{|\lambda_{i}|}{|\lambda_{1}|}$ siempre que $r_{2} \neq 0$ (i.e. el coeficiente $r_{2}$ es el \'unico que va junto a una taza de convergencia demasiado cerca a 1). Por otra parte, si $\vec{x}_{1}$ se conociese con exactitud, entonces:
+\begin{equation*}
+\lambda_{1} = \frac{(\textbf{A}\vec{x}_{1}) \cdot \vec{x}_{1}}{\vec{x}_{1} \cdot \vec{x}_{1}}
+\end{equation*}
+entrega el valor propio esperado. Ahora, si solamente tenemos una aproximaci\'on $\vec{x}'_{1}$ de dicho vector propio:
+\begin{equation*}
+\lambda_{1} \approx \frac{(\textbf{A}\vec{x}'_{1}) \cdot \vec{x}'_{1}}{\vec{x}'_{1} \cdot \vec{x}'_{1}}
+\end{equation*}
+nos entrega un estimado de $\lambda_{1}$. Luego, para continuar el m\'etodo, $\vec{x}_{k} = \frac{1}{\| a_{i,1} \|_{\infty}} (\textbf{A}\vec{x}_{k - 1})$.\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Aplicar el m\'etodo a la siguiente matriz:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+4 & 3 \\
+2 & 3 
+\end{pmatrix}
+\end{equation*}
+Como $\textbf{A}$ es diagonalizable, el m\'etodo es aplicable. Sea $\vec{u}_{0} = (1, 1)$ el vector inicial. Se tomar\'an hasta $k = 3$ iteraciones. Se empezar\'a por buscar $\lambda_{max}$:
+\begin{equation*}
+\textbf{A}\vec{u}_{0} = 
+\begin{pmatrix}
+7 \\
+5
+\end{pmatrix} = \vec{u}_{1}
+\end{equation*}
+Luego, $\vec{v}_{1} = \frac{\vec{u}_{1}}{|7|}$ nos entrega:
+\begin{equation*}
+ \frac{(\textbf{A}\vec{v}_{1}) \cdot \vec{v}_{1}}{\vec{v}_{1} \cdot \vec{v}_{1}} = 6.02703
+\end{equation*}
+Habiendo finalizado la primera iteraci\'on, se sigue como se muestra:
+\begin{equation*}
+\textbf{A}\vec{v}_{1} = 
+\begin{pmatrix}
+6.14286 \\
+4.14286
+\end{pmatrix} = \vec{u}_{2}
+\end{equation*}
+Luego, $\vec{v}_{2} = \frac{\vec{u}_{2}}{|6.14286|}$ nos entrega:
+\begin{equation*}
+ \frac{(\textbf{A}\vec{v}_{2}) \cdot \vec{v}_{2}}{\vec{v}_{2} \cdot \vec{v}_{2}} = 6.0052
+\end{equation*}
+Y repetimos por \'ultima vez:
+\begin{equation*}
+\textbf{A}\vec{v}_{2} = 
+\begin{pmatrix}
+6.02325 \\
+4.02325
+\end{pmatrix} = \vec{u}_{3}
+\end{equation*}
+Luego, $\vec{v}_{3} = \frac{\vec{u}_{3}}{|6.02325|}$ nos entrega:
+\begin{equation*}
+ \frac{(\textbf{A}\vec{v}_{3}) \cdot \vec{v}_{3}}{\vec{v}_{3} \cdot \vec{v}_{3}} = 6.00089
+\end{equation*}
+Lo que nos entrega que $\lambda_{max} \approx 6.00089$ junto con un vector propio estimado: $\vec{x}'_{6.00089} \approx (1, 0.667953)$. Tenga en cuenta que las respuestas leg\'itimas son $\lambda = 6$ y $\vec{x}_{6} = (0.83205, 0.5547)$. $\blacksquare$ \\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Error}: Al ser un m\'etodo de iteraci\'on de punto fijo, \'este converge linealmente; es decir, el error se reduce a medida constante entre el avance de las iteraciones:
+\begin{equation*}
+e_{i} = \frac{\| v_{i} - v_{i-1}\|}{\| v_{i} \|}
+\end{equation*}
+En particular, la taza de convergencia $S = |\frac{\lambda_{2}}{\lambda_{1}}|$ est\'a dada por los valores propios m\'as grandes. Tambi\'en se puede calcular el error en la iteraci\'on de la matriz:
+\begin{equation*}
+\mathcal{E}_{\textbf{A}\vec{x}^{k}} = \|\textbf{A}\vec{x}^{k}- \lambda^{k}\vec{x}^{k}\|
+\end{equation*}
+Para postular un criterio de parada se puede usar:
+\begin{equation*}
+\left|\frac{\lambda^{k} - \lambda^{k-1}}{\lambda^{k}}\right| < \epsilon
+\end{equation*}
+\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Verificar el error del ejemplo:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+4 & 3 \\
+2 & 3 
+\end{pmatrix}
+\end{equation*}
+Nos resultan:
+\begin{equation*}
+e_{3} = \frac{\| v_{3} - v_{2}\|}{\| v_{3} \|} = 0.005376
+\end{equation*}
+\begin{equation*}
+\mathcal{E}_{\textbf{A}\vec{v}^{3}} = \|\textbf{A}\vec{v}^{3}- \lambda^{3}\vec{v}^{3}\| = 0.005354
+\end{equation*}
+Y el criterio de parada vendr\'ia, como siempre, a regular las iteraciones. $\blacksquare$ \\
+\vspace{2mm} % Espacio entre líneas.
+%\textcolor{violet}{Computaci\'on}:
+%\vspace{2mm} % Espacio entre líneas.
+	\item\textbf{M\'etodo 3: \textcolor{violet}{factorizaci\'on QR}.}\\
+La descomposici\'on $\textbf{QR}$ es un m\'etodo de factorizaci\'on matricial que se emplea para hallar todos los valores propios de una matriz. La matriz $\textbf{A}$ se descompone como $\textbf{A} = \textbf{QR}$; donde $\textbf{Q}$ es una matriz ortogonal y $\textbf{R}$ es una matriz triangular superior.\\
+Iterando la descomposici\'on (i.e. el proceso), la matriz terminar\'a adaptando cierta forma similar a la diagonalizaci\'on, que es la que nos dar\'a los valores propios.\\
+Una ventaja de este m\'etodo es que permite aproximar todos los valores propios de la matriz, como desventaja se tiene el hecho de que es un proceso costoso de realizar.
+\vspace{2mm} % Espacio entre líneas.
+------ \textcolor{violet}{An\'alisis} ---------------------------------------------------------------------------------------------------------------------\\
+\vspace{2mm} % Espacio entre líneas.
+Sea $\textbf{A}$ una matriz $m \times n$ con columnas linealmente independientes.\\
+Sean $\vec{u}_{A_{1}}, \ldots, \vec{u}_{A_{n}}$ los vectores que representan las columnas de la matriz. Por lo que $\left\lbrace \vec{u}_{A_{i}} \right\rbrace_{1 \leq i \leq n}$ es una base para el espacio generado por las columnas de $\textbf{A}$ (todas estan componentes son no nulas). Mediante el Proceso de Gram-Schmidt, existe una base ortonormal $\vec{w}_{u_{1}}, \ldots, \vec{w}_{u_{n}}$ para dicho espacio.\\
+CONSTRUCCI\'ON DE BASE ORTONORMAL: T\'omese $\vec{w}_{u_{1}} = \vec{u}_{A_{1}}$. Luego se contruye la siguiente componente:
+\begin{equation*}
+\vec{w}_{u_{2}} = \vec{u}_{A_{2}} - \left(\frac{\vec{u}_{A_{2}} \cdot \vec{w}_{u_{1}}}{\vec{w}_{u_{1}} \cdot \vec{w}_{u_{1}}}\right) \vec{w}_{u_{1}}
+\end{equation*}
+La idea de hacer este proceso es garantizar la ortogonalidad de la misma:
+\begin{equation*}
+\vec{w}_{u_{3}} = \vec{u}_{A_{3}} - \left(\frac{\vec{u}_{A_{3}} \cdot \vec{w}_{u_{1}}}{\vec{w}_{u_{1}} \cdot \vec{w}_{u_{1}}}\right) \vec{w}_{u_{1}} - \left(\frac{\vec{u}_{A_{3}} \cdot \vec{w}_{u_{2}}}{\vec{w}_{u_{2}} \cdot \vec{w}_{u_{2}}}\right) \vec{w}_{u_{2}}
+\end{equation*}
+Y en general, para $i = 2, \ldots, n$, nos resulta:
+\begin{equation*}
+\vec{w}_{u_{i}} = \vec{u}_{A_{i}} - \left(\frac{\vec{u}_{A_{i}} \cdot \vec{w}_{u_{1}}}{\vec{w}_{u_{1}} \cdot \vec{w}_{u_{1}}}\right) \vec{w}_{u_{1}} - \left(\frac{\vec{u}_{A_{i}} \cdot \vec{w}_{u_{2}}}{\vec{w}_{u_{2}} \cdot \vec{w}_{u_{2}}}\right) \vec{w}_{u_{2}} - \cdots - \left(\frac{\vec{u}_{A_{i}} \cdot \vec{w}_{u_{n}}}{\vec{w}_{u_{n}} \cdot \vec{w}_{u_{n}}}\right) \vec{w}_{u_{n}}
+\end{equation*}
+Para garantizar la normalidad, al final bastar\'a con tomar $\vec{w}_{u_{i}}$ como $\frac{1}{\| \vec{w}_{u_{i}} \|}\vec{w}_{u_{i}}$.\\
+Al tener una base ortonormal, los vectores de la misma se pueden escribir como combinaci\'on lineal de sus elementos (combinaci\'on L.I):
+\begin{equation*}
+\vec{u}_{A_{1}} = r_{1,1}\vec{w}_{u_{1}} + r_{2,1}\vec{w}_{u_{2}} + \cdots + r_{n,1}\vec{w}_{u_{n}}
+\end{equation*}
+\begin{equation*}
+\vec{u}_{A_{2}} = r_{1,2}\vec{w}_{u_{1}} + r_{2,2}\vec{w}_{u_{2}} + \cdots + r_{n,2}\vec{w}_{u_{n}}
+\end{equation*}
+\begin{equation*}
+\vdots
+\end{equation*}
+\begin{equation*}
+\vec{u}_{A_{n}} = r_{1,n}\vec{w}_{u_{1}} + r_{2,n}\vec{w}_{u_{2}} + \cdots + r_{n,n}\vec{w}_{u_{n}}
+\end{equation*}
+donde cada $r_{j,i} = \vec{u}_{A_{i}} \cdot \vec{w}_{u_{j}}$.\\
+Como $\vec{w}_{u_{j}}$ es ortogonal a $gen\left\lbrace \vec{w}_{u_{1}}, \vec{w}_{u_{2}}, \ldots, \vec{w}_{u_{i}} \right\rbrace$ para todo $i < j$, entonces es ortogonal a $\vec{u}_{A_{i}}$. Por lo que el producto punto en cada $r_{j,i}$ es nulo para $j > i$. Sea $\textbf{Q}$ la matriz que tiene como columnas los vectores $\vec{w}_{u_{i}}$:
+\begin{equation*}
+\textbf{Q} =
+\begin{pmatrix}
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vec{w}_{u_{1}} & \vdots & \vec{w}_{u_{i}} & \vdots & \vec{w}_{u_{n}}\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\end{pmatrix}
+\end{equation*}
+Sea $\vec{r}_{j}$ el siguiente vector:
+\begin{equation*}
+\vec{r}_{j} =
+\begin{pmatrix}
+r_{1,j} \\
+r_{2,j} \\
+\vdots \\
+r_{n,j}
+\end{pmatrix}
+\end{equation*}
+Lo que nos permite reescribir la matriz inicial como:
+\begin{equation*}
+\textbf{A} =\textbf{Q}\textbf{R}
+\end{equation*}
+\begin{equation*}
+\textbf{A} = 
+\begin{pmatrix}
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vec{w}_{u_{1}} & \vdots & \vec{w}_{u_{i}} & \vdots & \vec{w}_{u_{n}}\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+\end{pmatrix}
+\begin{pmatrix}
+r_{1,1} & r_{1,2} & r_{1,3} & \cdots & r_{1,n}\\
+0 & r_{2,2} & r_{2,3} & \cdots & r_{2,n}\\
+0 & 0 & \ddots & \cdots & \vdots\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & r_{n,n}\\
+\end{pmatrix}
+\end{equation*}
+Para concluir basta con demostrar la no singularidad de $\textbf{R}$; es decir, veamos que $\textbf{R}$ es invertible:
+\begin{equation*}
+\textbf{R}\vec{x} = \vec{0} \rightarrow \textbf{Q}(\textbf{R}\vec{x}) = \vec{0} \rightarrow \textbf{A}\vec{x} = \vec{0}
+\end{equation*}
+Como $\textbf{A}$ tiene columnas L.I., entonces $\textbf{A}\vec{x} = \vec{0}$ implica que $\vec{x} = \vec{0}$. Por lo que $\textbf{R}$ es invertible y el sistema tiene \'unica soluci\'on.\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Aplicar el m\'etodo a la siguiente matriz:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+1 & 0 & -1\\
+2 & -3 & 3\\
+-1 & 2 & 4
+\end{pmatrix}
+\end{equation*}
+Aplicando la teoria anterior:\\
+Es f\'acil verificar que las columnas son L.I. y que forman una base. Ahora hallamos la base ortonormal asociada:
+\begin{equation*}
+\vec{w}_{u_{1}} =
+\begin{pmatrix}
+\frac{1}{\sqrt6} \\
+\frac{2}{\sqrt6} \\
+\frac{-1}{\sqrt6}
+\end{pmatrix}, \vec{w}_{u_{2}} =
+\begin{pmatrix}
+\frac{4}{\sqrt21} \\
+\frac{-1}{\sqrt21} \\
+\frac{2}{\sqrt21}
+\end{pmatrix}, \vec{w}_{u_{3}} =
+\begin{pmatrix}
+-1 \\
+\frac{2}{\sqrt14} \\
+\frac{3}{\sqrt14}
+\end{pmatrix},
+\end{equation*}
+Lo que nos entrega la matriz:
+\begin{equation*}
+\textbf{Q} =
+\begin{pmatrix}
+\frac{1}{\sqrt6} & \frac{4}{\sqrt21} & -1 \\
+\frac{2}{\sqrt6} & \frac{-1}{\sqrt21} & \frac{2}{\sqrt14} \\
+\frac{-1}{\sqrt6} & \frac{2}{\sqrt21} & \frac{3}{\sqrt14}
+\end{pmatrix} \approx
+\begin{pmatrix}
+0.408248 & 0.872872 & -1 \\
+0.816497 & -0.218218 & 0.534522 \\
+-0.408248 & 0.436436 & 0.801784
+\end{pmatrix}
+\end{equation*}
+Ahora procedemos a hallar los respectivos $r_{i,j}$ para construir la matriz triangular superior:
+\begin{equation*}
+\textbf{R} =
+\begin{pmatrix}
+\sqrt6 & \frac{-8}{\sqrt6} & \frac{1}{\sqrt6} \\
+0 & \frac{7}{\sqrt21} & \frac{1}{\sqrt21} \\
+0 & 0 & 1 + \frac{18}{\sqrt14}
+\end{pmatrix} \approx
+\begin{pmatrix}
+2.44949 & 0.872872 & 0.408248 \\
+0 & 1.52753 & 0.218218 \\
+0 & 0 & 5.8107
+\end{pmatrix}
+\end{equation*}
+Luego, se comprueba que:
+\begin{equation*}
+\textbf{A} \approx
+\begin{pmatrix}
+\frac{1}{\sqrt6} & \frac{4}{\sqrt21} & -1 \\
+\frac{2}{\sqrt6} & \frac{-1}{\sqrt21} & \frac{2}{\sqrt14} \\
+\frac{-1}{\sqrt6} & \frac{2}{\sqrt21} & \frac{3}{\sqrt14}
+\end{pmatrix}
+\begin{pmatrix}
+\sqrt6 & \frac{-8}{\sqrt6} & \frac{1}{\sqrt6} \\
+0 & \frac{7}{\sqrt21} & \frac{1}{\sqrt21} \\
+0 & 0 & 1 + \frac{18}{\sqrt14}
+\end{pmatrix}
+\end{equation*}
+Y as\'i se consigue la factorizaci\'on deseada. $\blacksquare$ \\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Error}: Para el caso de matrices $\textbf{A}$, $m \times m$, sim\'etricas, con valores propios satisfaciendo una cadena de desigualdad (i.e. hip\'otesis del caso del m\'etodo de las potencias). La factorizaci\'on $\textbf{Q}\textbf{R}$ converge uniformemente a los vectores propios de $\textbf{A}$. Adem\'as, para la j-\'esima iteraci\'on de la forma: $\textbf{A}_{j - 1} = \textbf{Q}_{j}\textbf{A}_{j}\textbf{Q}_{j}^{T}$, si $j \rightarrow \infty$, entonces $\textbf{A}_{j}$ converge a una matriz diagonal con sus entradas siendo los valores propios y su respectiva $\textbf{Q}_{j}$ converge a una matriz ortogonal con sus columnas siendo sus vectores propios. En particular, para $\epsilon > 0$, se puede postular:
+\begin{equation*}
+\| \textbf{A}_{k} - diag(\textbf{A}_{k}) \|_{\infty} < \epsilon
+\end{equation*}
+\begin{equation*}
+\max\limits_{1 \leq i \leq m} \sum\limits_{j = 1}^{n} |a_{ij} - diag(a_{ij})| < \epsilon
+\end{equation*}
+donde la primera ecuaci\'on se usa para matrices cuadradas y la segunda para matrices $m \times n$.\\
+\vspace{2mm} % Espacio entre líneas.
+\textcolor{violet}{Ejemplo}: Verificar el error del ejemplo:
+\begin{equation*}
+\textbf{A} =
+\begin{pmatrix}
+1 & 0 & -1\\
+2 & -3 & 3\\
+-1 & 2 & 4
+\end{pmatrix}
+\end{equation*}
+Aplicamos las f\'ormulas dadas y verificamos:
+\begin{equation*}
+\| \textbf{A}_{k} - diag(\textbf{A}_{k}) \|_{\infty} = \| \textbf{A} - diag(\textbf{QR}) \|_{\infty} = 3.37936
+\end{equation*}
+Que nos resulta un error algo alto. Lo que nos alerta sobre un error en la descomposici\'on de la matriz. $\blacksquare$ \\
+%
+\end{enumerate}
+%
+%
+
+\paragraph{\textbf{BIBLIOGRAF\'IA}}:\\
+$\cdot$ Sauer, T. (2012). \textit{Numerical Analysis, second edition}. PEARSON.\\
+$\cdot$ Burden, L. R.; Faires, J. D.; Burden, M. A. (2016). \textit{Numerical Analysis, tenth edition}. CENGAGE Learning.\\
+$\cdot$ Kolman, B. (1999). \textit{\'Algebra lineal con aplicaciones y MatLab, sexta edici\'on}. PEARSON education.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%
+%
+\end{document}
+%
+%
+%
