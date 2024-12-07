@@ -18,17 +18,17 @@ The source code for these methods is located in the `src/methods` directory.
 
 ## Project Structure
 
-├─ report
-├─ src 
-    ├─ methods 
-        ├─ characteristic-polynomial-method.py 
-        ├─ power-method.py 
-        └─ qr-decomposition-method.py
-    ├─ results
-    └─ tests
-├─ .gitignore 
-├─ README.md
-└─ requirements.txt  
+├─ report<br>
+├─ src <br>
+    ├─ methods <br>
+        ├─ characteristic-polynomial-method.py <br>
+        ├─ power-method.py <br>
+        └─ qr-decomposition-method.py<br>
+    ├─ results<br>
+    └─ tests<br>
+├─ .gitignore <br>
+├─ README.md<br>
+└─ requirements.txt  <br>
 
 - `requirements.txt`: Contains the dependencies needed to run the project.
 - `src/methods/`: Contains the Python scripts implementing the eigenvalue and eigenvector methods.
@@ -52,6 +52,7 @@ Although a virtual environment is not included in the repository (as it's ignore
    This command creates a new virtual environment named venv in the project root directory.
 
 2. **Activate the virtual environment:**
+
     On macOS/Linux:
     ```bash
     source venv/bin/activate
