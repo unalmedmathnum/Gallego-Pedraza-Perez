@@ -40,8 +40,16 @@ The source code for these methods is located in the `src/methods` directory.
 └─ requirements.txt
 ```
 
+- `report/`: Contains the report with the final PDF file about the theory and error analysis about the assignments given.
 - `requirements.txt`: Contains the dependencies needed to run the project.
 - `src/methods/`: Contains the Python scripts implementing the eigenvalue and eigenvector methods.
+
+## Report
+
+Inside the `report/` directory, you will find the PDF file and the native .tex file for latex, that contain the report with the final PDF file about the theory and error analysis about the assignments given.
+
+1. **`Gallego Montoya- Pedraza Rendón- Pérez Pérez.pdf`**
+2. **`Gallego Montoya- Pedraza Rendón- Pérez Pérez.tex`**
 
 ## Getting Started
 
