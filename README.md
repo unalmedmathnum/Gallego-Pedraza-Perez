@@ -1,5 +1,13 @@
 # Matrix Eigenvalue and Eigenvector Methods
 
+## Authors:
+
+1. Carlos Andres Gallego Montoya
+2. Gustavo Adolfo Perez Perez
+3. Sebastian Pedraza Rendon
+
+## Introduction:
+
 This project demonstrates three methods for calculating eigenvalues and eigenvectors of matrices:
 
 1. **Characteristic Polynomial Method**  
